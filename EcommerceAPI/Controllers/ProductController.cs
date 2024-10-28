@@ -1,4 +1,5 @@
 ﻿using EcommerceAPI._ُEntities;
+using EcommerceAPI.Repositories.ProductRepo;
 using EcommerceAPI.StoreContext;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -11,22 +12,25 @@ namespace EcommerceAPI.Controllers
     [ApiController]
     public class ProductsController : ControllerBase
     {
-        private readonly EcommerceContext _context;
-        public ProductsController(EcommerceContext context)
+        private readonly IproductRepository _repo;
+
+        public ProductsController(IproductRepository Repo)
         {
-            _context = context;
+
+            _repo = Repo;
         }
 
         [HttpGet]
         public async Task< ActionResult<List<Product>>> Getproducts()
         {
-            var products = await _context.Products.ToListAsync();
-            return products ;
+            var products = await _repo.GetProductsAsync();
+            return Ok(products);
         } 
         [HttpGet("{id}")]
         public async Task< ActionResult<Product>> GetProduct(int id)
         {
-            return await _context.Products.FindAsync(id);
+            return await _repo.GetProductByIdAsync(id);
+            
         } 
     }
 }

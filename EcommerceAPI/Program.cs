@@ -1,3 +1,4 @@
+using EcommerceAPI.Repositories.ProductRepo;
 using EcommerceAPI.StoreContext;
 using Microsoft.EntityFrameworkCore;
 
@@ -10,13 +11,13 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-
 builder.Services.AddDbContext<EcommerceContext>(opt =>
 {
     opt.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 
 }
 );
+builder.Services.AddScoped<IproductRepository, ProductRepository>();
 
 var app = builder.Build();
 
