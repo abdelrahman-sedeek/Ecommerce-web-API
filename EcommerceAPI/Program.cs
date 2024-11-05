@@ -33,5 +33,16 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+var scope = app.Services.CreateScope();
+var services= scope.ServiceProvider;
+var context= services.GetRequiredService<EcommerceContext>();
+var logger = services.GetRequiredService<ILogger<Program>>();
+ try{
+    await context.Database.MigrateAsync();
+}
+catch(System.Exception ex)
+{
+    logger.LogError(ex, "error occured during migration");
+}
 
 app.Run();
