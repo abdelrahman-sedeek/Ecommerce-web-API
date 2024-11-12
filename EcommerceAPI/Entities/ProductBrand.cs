@@ -1,7 +1,8 @@
 ﻿namespace EcommerceAPI._ُEntities
 {
-    public class ProductType:BaseEntity
+    public class ProductBrand:BaseEntity
     {
         public string Name { get; set; }
+
     }
 }

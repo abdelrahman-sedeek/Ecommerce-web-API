@@ -1,3 +1,4 @@
+using EcommerceAPI.Data;
 using EcommerceAPI.Repositories.ProductRepo;
 using EcommerceAPI.StoreContext;
 using Microsoft.EntityFrameworkCore;
@@ -39,6 +40,7 @@ var context= services.GetRequiredService<EcommerceContext>();
 var logger = services.GetRequiredService<ILogger<Program>>();
  try{
     await context.Database.MigrateAsync();
+    await StoreContextSeed.SeedAsync(context);
 }
 catch(System.Exception ex)
 {
