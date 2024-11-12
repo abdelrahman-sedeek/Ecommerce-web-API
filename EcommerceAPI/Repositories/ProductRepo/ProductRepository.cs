@@ -1,5 +1,6 @@
 ﻿using EcommerceAPI._ُEntities;
 using EcommerceAPI.StoreContext;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace EcommerceAPI.Repositories.ProductRepo
@@ -13,6 +14,7 @@ namespace EcommerceAPI.Repositories.ProductRepo
             _context = Context;
         }
 
+        [HttpGet("{id}")]
         public async Task<Product> GetProductByIdAsync(int Id)
         {
             return await _context.Products.FindAsync(Id);
@@ -21,6 +23,19 @@ namespace EcommerceAPI.Repositories.ProductRepo
         public async Task<IReadOnlyList<Product>> GetProductsAsync()
         {
             return await _context.Products.ToListAsync();
+        }
+
+      
+        public async Task<IReadOnlyList<ProductBrand>> GetProductBrandsAsync()
+        {
+            return await _context.ProductBrand.ToListAsync();
+        }
+
+   
+        public async Task<IReadOnlyList<ProductType>> GetProductTypesAsync()
+        {
+            return await _context.ProductType.ToListAsync();
+            
         }
     }
 }

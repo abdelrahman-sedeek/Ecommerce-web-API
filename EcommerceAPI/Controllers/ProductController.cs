@@ -8,8 +8,8 @@ using System.Reflection.Metadata.Ecma335;
 
 namespace EcommerceAPI.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
+    [Route("api/[controller]")]
     public class ProductsController : ControllerBase
     {
         private readonly IproductRepository _repo;
@@ -31,6 +31,16 @@ namespace EcommerceAPI.Controllers
         {
             return await _repo.GetProductByIdAsync(id);
             
-        } 
+        }
+        [HttpGet("brands")]
+        public async Task<ActionResult<List<ProductType>>> GetProductBrands()
+        {
+            return  Ok(await _repo.GetProductBrandsAsync());
+        }
+        [HttpGet("types")]
+        public async Task<ActionResult<List<ProductType>>> GetProductTypes()
+        {
+            return  Ok(await _repo.GetProductTypesAsync());
+        }
     }
 }
