@@ -17,12 +17,18 @@ namespace EcommerceAPI.Repositories.ProductRepo
         [HttpGet("{id}")]
         public async Task<Product> GetProductByIdAsync(int Id)
         {
-            return await _context.Products.FindAsync(Id);
+            return await _context.Products
+                .Include(p => p.productBrand)
+                .Include(p=>p.ProductType)
+                .FirstOrDefaultAsync(p=>p.Id==Id);
         }
 
         public async Task<IReadOnlyList<Product>> GetProductsAsync()
         {
-            return await _context.Products.ToListAsync();
+            return await _context.Products
+                .Include(p => p.productBrand)
+                .Include(p => p.ProductType)
+                .ToListAsync();
         }
 
       

@@ -14,25 +14,33 @@ namespace EcommerceAPI.Data
                 var productBrandData = File.ReadAllText("../EcommerceAPI/Data/SeedData/brands.json");
                 var brands = JsonSerializer.Deserialize<List<ProductBrand>>(productBrandData);
 
+                // Add ProductBrands and save changes
                 await context.ProductBrand.AddRangeAsync(brands);
-
+                await context.SaveChangesAsync();
             }
 
             if (!context.ProductType.Any())
             {
-                var ProductTypeData = File.ReadAllText("../EcommerceAPI/Data/SeedData/types.json");
-                var ProductTypes = JsonSerializer.Deserialize<List<ProductType>>(ProductTypeData);
-                context.ProductType.AddRange(ProductTypes);
+                var productTypeData = File.ReadAllText("../EcommerceAPI/Data/SeedData/types.json");
+                var productTypes = JsonSerializer.Deserialize<List<ProductType>>(productTypeData);
+
+                // Add ProductTypes and save changes
+                context.ProductType.AddRange(productTypes);
+                await context.SaveChangesAsync();
             }
+
             if (!context.Products.Any())
             {
-                var ProductData = File.ReadAllText("../EcommerceAPI/Data/SeedData/products.json");
-                var Products =JsonSerializer.Deserialize<List<Product>>(ProductData);
-                context.Products.AddRange(Products);
-            }
-            if (context.ChangeTracker.HasChanges()) await context.SaveChangesAsync();
+                var productData = File.ReadAllText("../EcommerceAPI/Data/SeedData/products.json");
+                var products = JsonSerializer.Deserialize<List<Product>>(productData);
 
-          
+                // Add Products and save changes
+                context.Products.AddRange(products);
+                await context.SaveChangesAsync();
+            }
+            //if (context.ChangeTracker.HasChanges()) await context.SaveChangesAsync();
+
+
         }
     }
 }
