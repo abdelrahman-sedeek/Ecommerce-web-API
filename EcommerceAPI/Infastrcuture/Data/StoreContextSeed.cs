@@ -1,13 +1,13 @@
-﻿using EcommerceAPI._ُEntities;
+﻿using EcommerceAPI.Core.Entities;
 using EcommerceAPI.StoreContext;
 using Microsoft.EntityFrameworkCore;
 using System.Text.Json;
 
-namespace EcommerceAPI.Data
+namespace EcommerceAPI.Infastrcuture.Data
 {
     public class StoreContextSeed
     {
-        public static async Task SeedAsync( EcommerceContext context)
+        public static async Task SeedAsync(EcommerceContext context)
         {
             if (!context.ProductBrand.Any())
             {

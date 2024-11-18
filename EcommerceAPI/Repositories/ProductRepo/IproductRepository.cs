@@ -1,4 +1,4 @@
-﻿using EcommerceAPI._ُEntities;
+﻿using EcommerceAPI.Core.Entities;
 
 namespace EcommerceAPI.Repositories.ProductRepo
 {

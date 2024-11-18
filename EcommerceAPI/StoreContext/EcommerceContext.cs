@@ -1,4 +1,4 @@
-﻿using EcommerceAPI._ُEntities;
+﻿using EcommerceAPI.Core.Entities;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 

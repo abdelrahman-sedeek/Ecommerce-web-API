@@ -1,4 +1,4 @@
-﻿using EcommerceAPI._ُEntities;
+﻿using EcommerceAPI.Core.Entities;
 using EcommerceAPI.StoreContext;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;

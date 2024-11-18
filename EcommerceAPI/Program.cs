@@ -1,4 +1,4 @@
-using EcommerceAPI.Data;
+using EcommerceAPI.Infastrcuture.Data;
 using EcommerceAPI.Repositories.ProductRepo;
 using EcommerceAPI.StoreContext;
 using Microsoft.EntityFrameworkCore;
