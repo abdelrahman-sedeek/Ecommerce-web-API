@@ -1,3 +1,4 @@
+using EcommerceAPI.Core.Interfaces;
 using EcommerceAPI.Infastrcuture.Data;
 using EcommerceAPI.Repositories.ProductRepo;
 using EcommerceAPI.StoreContext;
@@ -19,6 +20,7 @@ builder.Services.AddDbContext<EcommerceContext>(opt =>
 }
 );
 builder.Services.AddScoped<IproductRepository, ProductRepository>();
+builder.Services.AddScoped( typeof(IGenericRepository<>), typeof(GenericRepository<>) );
 
 var app = builder.Build();
 
